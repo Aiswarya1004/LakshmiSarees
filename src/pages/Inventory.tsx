@@ -7,24 +7,137 @@ import { Search, Plus, CheckCircle } from 'lucide-react';
 import { categories } from '../data/categories';
 
 const initialProducts = [
-  {
-    code: 'B-1',
-    name: '4689 Cotton Blouse',
-    category: 'Blouses',
-    costPrice: 45,
-    price: 65,
-    qty: 100,
-    sold: 10,
-  },
-  {
-    code: 'B-2',
-    name: 'Arvind Cotton Blouse',
-    category: 'Blouses',
-    costPrice: 60,
-    price: 85,
-    qty: 100,
-    sold: 15,
-  },
+  // Blouse Products
+  { code: "NB-1", name: "4689 Cotton Blouse", costPrice: 45, price: 65, category: "Blouses", qty: 100, sold: 0 },
+  { code: "NB-2", name: "4689 Cotton Blouse", costPrice: 60, price: 85, category: "Blouses", qty: 100, sold: 0 },
+  { code: "NB-3", name: "Aravind Cotton Blouse", costPrice: 70, price: 100, category: "Blouses", qty: 100, sold: 0 },
+  { code: "KB-1", name: "Kalamkari Blouse", costPrice: 45, price: 65, category: "Blouses", qty: 50, sold: 0 },
+  { code: "KB-2", name: "Kalamkari Blouse", costPrice: 70, price: 100, category: "Blouses", qty: 75, sold: 0 },
+  { code: "NB-4", name: "1.25m Cotton Blouse", costPrice: 100, price: 140, category: "Blouses", qty: 10, sold: 0 },
+  { code: "KB-3", name: "Kalamkari Blouse", costPrice: 105, price: 140, category: "Blouses", qty: 25, sold: 0 },
+
+  // Sarees - KHP Series
+  { code: "KHP01-06", name: "Ekkath kotta Saree", costPrice: 600, price: 840, category: "Sarees", qty: 6, sold: 0 },
+  { code: "KHP02-1-10", name: "Ekkath kotta Saree", costPrice: 480, price: 680, category: "Sarees", qty: 10, sold: 0 },
+  { code: "KHP3-1-5", name: "Cotton Saree", costPrice: 900, price: 1250, category: "Sarees", qty: 5, sold: 0 },
+  { code: "KHP3-6-11", name: "Cotton Saree", costPrice: 950, price: 1350, category: "Sarees", qty: 6, sold: 0 },
+
+  // Sarees - LTN Series
+  { code: "LTN-2646-1-5", name: "Zari Border Saree", costPrice: 550, price: 780, category: "Sarees", qty: 5, sold: 0 },
+  { code: "LTN-8790-1-2", name: "Zari Border Saree", costPrice: 650, price: 920, category: "Sarees", qty: 2, sold: 0 },
+  { code: "LTN-9227-1-5", name: "Zari Border Saree", costPrice: 525, price: 750, category: "Sarees", qty: 5, sold: 0 },
+  { code: "LTN-6551-4", name: "Muthukattam Saree", costPrice: 630, price: 900, category: "Sarees", qty: 4, sold: 0 },
+  { code: "LTN-6091-10", name: "Plain Kanchi Border", costPrice: 420, price: 600, category: "Sarees", qty: 10, sold: 0 },
+  { code: "LTN-9430-6", name: "Plain Kanchi Border", costPrice: 770, price: 1100, category: "Sarees", qty: 6, sold: 0 },
+  { code: "LTN-1084-5", name: "Butta Kanchi Border", costPrice: 700, price: 1000, category: "Sarees", qty: 5, sold: 0 },
+  { code: "LTN-6870-8", name: "Butta Kanchi Border", costPrice: 680, price: 970, category: "Sarees", qty: 8, sold: 0 },
+  { code: "LTN-5977-5", name: "Agarlic Cotton Silk", costPrice: 1085, price: 1550, category: "Sarees", qty: 5, sold: 0 },
+  { code: "LTN-8739-5", name: "Agarlic Seer Pallu", costPrice: 1190, price: 1700, category: "Sarees", qty: 5, sold: 0 },
+  { code: "LTN-9604-5", name: "Agarlic Cotton Butta", costPrice: 2415, price: 3450, category: "Sarees", qty: 5, sold: 0 },
+
+  // Sarees - RVV Series
+  { code: "RVV-1-14", name: "Kalyani Cotton", costPrice: 595, price: 850, category: "Sarees", qty: 14, sold: 0 },
+  { code: "RVV-2-7", name: "Kalyani Big Border", costPrice: 630, price: 900, category: "Sarees", qty: 7, sold: 0 },
+  { code: "RVV-3-13", name: "Zari Border", costPrice: 770, price: 1100, category: "Sarees", qty: 13, sold: 0 },
+  { code: "RVV-4-5", name: "Muthukattam", costPrice: 763, price: 1090, category: "Sarees", qty: 5, sold: 0 },
+  { code: "RVV-5-7", name: "Plain Kanchi", costPrice: 1155, price: 1650, category: "Sarees", qty: 8, sold: 0 },
+  { code: "RVV-6-8", name: "Plain Kanchi", costPrice: 1260, price: 1800, category: "Sarees", qty: 8, sold: 0 },
+  { code: "RVV-7-1", name: "Butta Kanchi", costPrice: 1120, price: 1600, category: "Sarees", qty: 1, sold: 0 },
+
+  // Sarees - SSE Series
+  { code: "SSE-0205", name: "Pathik Saree", costPrice: 595, price: 850, category: "Sarees", qty: 1, sold: 0 },
+  { code: "SSE-19", name: "Mallika 5.50 Mtr", costPrice: 385, price: 550, category: "Sarees", qty: 20, sold: 0 },
+  { code: "SSE-013", name: "Pathik Chudi", costPrice: 980, price: 1400, category: "Sarees", qty: 1, sold: 0 },
+  { code: "SSE-0166", name: "Pathik Chudi", costPrice: 763, price: 1090, category: "Sarees", qty: 2, sold: 0 },
+  { code: "SSE-0204", name: "Pathik Saree", costPrice: 1155, price: 1650, category: "Sarees", qty: 3, sold: 0 },
+  { code: "SSE-0200", name: "Pathik Saree", costPrice: 525, price: 750, category: "Sarees", qty: 1, sold: 0 },
+  { code: "SSE-145", name: "Malliga Cool", costPrice: 410, price: 585, category: "Sarees", qty: 10, sold: 0 },
+  { code: "SSE-199", name: "Malliga Cool", costPrice: 700, price: 1000, category: "Sarees", qty: 9, sold: 0 },
+  { code: "SSE-093", name: "SSS Kotta", costPrice: 420, price: 600, category: "Sarees", qty: 10, sold: 0 },
+  { code: "SSE-95", name: "Jaikali", costPrice: 420, price: 600, category: "Sarees", qty: 5, sold: 0 },
+
+  // Sarees - SSSK Series
+  { code: "SSSK-1-8", name: "Ekkath Kotta", costPrice: 665, price: 950, category: "Sarees", qty: 8, sold: 0 },
+  { code: "SSSK-2-1-20", name: "Ekkath Kotta", costPrice: 1085, price: 1550, category: "Sarees", qty: 20, sold: 0 },
+
+  // Sarees - VWCS Series
+  { code: "VWCS-1-1-2", name: "Zari Border", costPrice: 805, price: 1150, category: "Sarees", qty: 2, sold: 0 },
+  { code: "VWCS-1-1-3-4", name: "Zari Border", costPrice: 875, price: 1250, category: "Sarees", qty: 2, sold: 0 },
+  { code: "VWCS-1-1-5-7", name: "Zari Border", costPrice: 910, price: 1300, category: "Sarees", qty: 3, sold: 0 },
+  { code: "VWCS-2-1-6", name: "Muthukattam", costPrice: 973, price: 1390, category: "Sarees", qty: 6, sold: 0 },
+  { code: "VWCS-3-1-15", name: "Plain Kanchi", costPrice: 1155, price: 1650, category: "Sarees", qty: 15, sold: 0 },
+  { code: "VWCS-3-16=20", name: "Plain Kanchi", costPrice: 1099, price: 1570, category: "Sarees", qty: 5, sold: 0 },
+  { code: "VWCS-4-1-7", name: "Butta Kanchi", costPrice: 1120, price: 1600, category: "Sarees", qty: 5, sold: 0 },
+  { code: "VWCS-4-8-10", name: "Butta Kanchi", costPrice: 1204, price: 1720, category: "Sarees", qty: 5, sold: 0 },
+  { code: "VWCS-5-1-14", name: "Agarlic Silk", costPrice: 952, price: 1360, category: "Sarees", qty: 14, sold: 0 },
+  { code: "VWCS-6-1-7", name: "Seer Pallu", costPrice: 882, price: 1260, category: "Sarees", qty: 7, sold: 0 },
+  { code: "VWCS-7-1-2", name: "Agarlic Butta", costPrice: 1050, price: 1500, category: "Sarees", qty: 2, sold: 0 },
+  { code: "VWCS-8-1-3", name: "Vaiaroosi", costPrice: 1260, price: 1800, category: "Sarees", qty: 3, sold: 0 },
+  { code: "VWCS-9-1-14", name: "Kattam Butta", costPrice: 1295, price: 1850, category: "Sarees", qty: 14, sold: 0 },
+  { code: "VWCS-10-1-8", name: "Muthukattam", costPrice: 1400, price: 2000, category: "Sarees", qty: 8, sold: 0 },
+  { code: "VWCS-11-1-5", name: "Plain Araimadam", costPrice: 1470, price: 2100, category: "Sarees", qty: 5, sold: 0 },
+  { code: "VWCS-12-1-4", name: "Plain Kanchi", costPrice: 1715, price: 2450, category: "Sarees", qty: 4, sold: 0 },
+
+  // Sarees - MG Series
+  { code: "MG-1324-1", name: "Cotton Saree", costPrice: 1015, price: 1450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1324-2", name: "Cotton Saree", costPrice: 1015, price: 1450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1030-1", name: "Cotton Saree", costPrice: 1260, price: 1800, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1030-2", name: "Cotton Saree", costPrice: 1260, price: 1800, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1004-1", name: "Cotton Saree", costPrice: 1400, price: 2000, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1004-2", name: "Cotton Saree", costPrice: 1400, price: 2000, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1323-1", name: "Cotton Saree", costPrice: 1015, price: 1450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1323-2", name: "Cotton Saree", costPrice: 1015, price: 1450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1323-3", name: "Cotton Saree", costPrice: 1015, price: 1450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1326-1", name: "Cotton Saree", costPrice: 1120, price: 1600, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1326-2", name: "Cotton Saree", costPrice: 1120, price: 1600, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1326-3", name: "Cotton Saree", costPrice: 1120, price: 1600, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1326-4", name: "Cotton Saree", costPrice: 1120, price: 1600, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-1326-5", name: "Cotton Saree", costPrice: 1120, price: 1600, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-1", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-2", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-3", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-4", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-5", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-6", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-8", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-9", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+  { code: "MG-K3-10", name: "Cotton Saree", costPrice: 399, price: 570, category: "Sarees", qty: 1, sold: 0 },
+
+  // Sarees - OS Series (Old Stock)
+  { code: "OS-1", name: "Kalyani Cotton", costPrice: 630, price: 900, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-2", name: "Kalyani Cotton", costPrice: 630, price: 900, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-3", name: "Kalyani Cotton", costPrice: 630, price: 900, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-4", name: "Kalyani Cotton", costPrice: 595, price: 850, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-5", name: "Kalyani Cotton", costPrice: 595, price: 850, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-6", name: "Kalyani Cotton", costPrice: 630, price: 900, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-7", name: "Kalyani Cotton", costPrice: 945, price: 1350, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-8", name: "Kalyani Cotton", costPrice: 945, price: 1350, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-9", name: "Kalyani Cotton", costPrice: 945, price: 1350, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-10", name: "9 Yards Kalyani", costPrice: 1400, price: 2000, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-11", name: "9 Yards Kalyani", costPrice: 1400, price: 2000, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-12", name: "6 Yards Kalyani", costPrice: 770, price: 1100, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-13", name: "6 Yards Kalyani", costPrice: 770, price: 1100, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-14", name: "Kalyani Cotton", costPrice: 840, price: 1200, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-15", name: "Kalyani Cotton", costPrice: 840, price: 1200, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-16", name: "Kalyani Cotton", costPrice: 840, price: 1200, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-17", name: "Kalyani Cotton", costPrice: 315, price: 450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-18", name: "Kalyani Cotton", costPrice: 315, price: 450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-19", name: "Kalyani Cotton", costPrice: 315, price: 450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-20", name: "Kalyani Cotton", costPrice: 315, price: 450, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-21", name: "Kalyani Cotton", costPrice: 525, price: 750, category: "Sarees", qty: 1, sold: 0 },
+  { code: "OS-22", name: "Kalyani Cotton", costPrice: 525, price: 750, category: "Sarees", qty: 1, sold: 0 },
+
+  // Chudidhars - MG Series
+  { code: "MG-VC87-1-1", name: "Chudidhar", costPrice: 980, price: 1400, category: "Chudidhars", qty: 1, sold: 0 },
+  { code: "MG-VC87-2-1", name: "Chudidhar", costPrice: 840, price: 1200, category: "Chudidhars", qty: 1, sold: 0 },
+  { code: "MG-VC87-2-2", name: "Chudidhar", costPrice: 840, price: 1200, category: "Chudidhars", qty: 1, sold: 0 },
+  { code: "MG-VC87-2-3", name: "Chudidhar", costPrice: 840, price: 1200, category: "Chudidhars", qty: 1, sold: 0 },
+  { code: "MG-VC87-3-1", name: "Chudidhar", costPrice: 840, price: 1200, category: "Chudidhars", qty: 1, sold: 0 },
+
+  // Chudidhars - SC Series
+  { code: "SC-101-1-15", name: "Chudidhar", costPrice: 700, price: 1000, category: "Chudidhars", qty: 15, sold: 0 },
+  { code: "SC-338-5", name: "Chudidhar", costPrice: 910, price: 1300, category: "Chudidhars", qty: 5, sold: 0 },
+  { code: "SC-307-3", name: "Chudidhar", costPrice: 1155, price: 1650, category: "Chudidhars", qty: 3, sold: 0 }
 ];
 
 export const Inventory = () => {
